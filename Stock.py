@@ -10,6 +10,26 @@ class Shop:
             print("4. Update an item")
             print("5. Search for an item")
             print("6. Exit")
+#User to enter choice of action to run
+
+	    choice = input("Choose an option: ")
+
+            if choice == "1":
+                self.add_item()
+            elif choice == "2":
+                self.view_items()
+            elif choice == "3":
+                self.delete_item()
+            elif choice == "4":
+                self.update_item()
+            elif choice == "5":
+                self.search_item()
+            elif choice == "6":
+                print("Exiting the system...")
+                self.conn.close()
+                break
+            else:
+                print("Invalid choice. Please try again.")
 #run the program 
 shop = Shop()
 shop.main()
