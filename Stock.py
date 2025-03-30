@@ -10,3 +10,6 @@ class Shop:
             print("4. Update an item")
             print("5. Search for an item")
             print("6. Exit")
+#run the program 
+shop = Shop()
+shop.main()
