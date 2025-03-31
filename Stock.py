@@ -54,6 +54,19 @@ class Shop:
             print("\nItems in the shop:")
             for item in items:
                 print(f"ID: {item[0]}, Name: {item[1]}, Price: ${item[2]}, Quantity: {item[3]}")
+    
+    def update_item(self):
+        """Updates the price and quantity of an item in the database."""
+        name = input("Enter the name of the item to update: ")
+        new_price = float(input("Enter the new price: "))
+        new_quantity = int(input("Enter the new quantity: "))
+
+        self.cursor.execute("UPDATE items SET price = ?, quantity = ? WHERE name = ?", (new_price, new_quantity, name))
+        if self.cursor.rowcount > 0:
+            self.conn.commit()
+            print(f"Item '{name}' updated successfully!")
+        else:
+            print("Item not found.")            
 
 #run the program 
 shop = Shop()
