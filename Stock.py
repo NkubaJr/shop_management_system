@@ -54,7 +54,17 @@ class Shop:
             print("\nItems in the shop:")
             for item in items:
                 print(f"ID: {item[0]}, Name: {item[1]}, Price: ${item[2]}, Quantity: {item[3]}")
-    
+
+    def delete_item(self):
+        """Deletes an item from the database by name."""
+        name = input("Enter the name of the item to delete: ")
+        self.cursor.execute("DELETE FROM items WHERE name = ?", (name,))
+        if self.cursor.rowcount > 0:
+            self.conn.commit()
+            print(f"Item '{name}' deleted successfully!")
+        else:
+            print("Item not found.")
+
     def update_item(self):
         """Updates the price and quantity of an item in the database."""
         name = input("Enter the name of the item to update: ")
