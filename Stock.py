@@ -30,6 +30,19 @@ class Shop:
                 break
             else:
                 print("Invalid choice. Please try again.")
+    def add_item(self):
+        """Adds an item to the database."""
+        name = input("Enter the item name: ")
+        price = float(input("Enter the item price: "))
+        quantity = int(input("Enter the quantity: "))
+
+        try:
+            self.cursor.execute("INSERT INTO items (name, price, quantity) VALUES (?, ?, ?)", (name, price, quantity))
+            self.conn.commit()
+            print(f"Item '{name}' added successfully!")
+        except sqlite3.IntegrityError:
+            print("Error: Item with this name already exists!")
+    
     def view_items(self):
         """Retrieves and displays all items in the database."""
         self.cursor.execute("SELECT * FROM items")
