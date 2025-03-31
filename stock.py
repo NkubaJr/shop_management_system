@@ -4,6 +4,11 @@ import mysql.connector
 class Shop:
     def __init__(self):
         """Initialize the MySQL database connection."""
+        print("=" * 50)
+        print("🎉 Welcome to the Shop Management System 🎉")
+        print("📦 Manage your shop with ease and efficiency!")
+        print("=" * 50)
+        
         self.conn = mysql.connector.connect(
             host="localhost",  # Assuming MySQL is running locally
             user="shop_user",  # The new user you created
