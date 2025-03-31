@@ -30,6 +30,18 @@ class Shop:
                 break
             else:
                 print("Invalid choice. Please try again.")
+    def view_items(self):
+        """Retrieves and displays all items in the database."""
+        self.cursor.execute("SELECT * FROM items")
+        items = self.cursor.fetchall()
+
+        if not items:
+            print("No items available.")
+        else:
+            print("\nItems in the shop:")
+            for item in items:
+                print(f"ID: {item[0]}, Name: {item[1]}, Price: ${item[2]}, Quantity: {item[3]}")
+
 #run the program 
 shop = Shop()
 shop.main()
